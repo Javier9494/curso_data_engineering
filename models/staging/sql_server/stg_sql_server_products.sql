@@ -2,4 +2,4 @@
 
  SELECT 
         *
-    FROM {{ source('sql_server_dbo', 'addresses') }} 
+    FROM {{ source('sql_server_dbo', 'products') }} 
