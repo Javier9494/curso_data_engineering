@@ -19,16 +19,21 @@ sources:
           - name: _row
             tests:
               - not_null
+            description: "numero de columna"
           - name: product_id
             tests:
               - not_null
               - unique
+            description: "identificador de producto"
           - name: quantity
             tests:
               - not_null
+            description: "cantidad"
           - name: month
             tests:
               - not_null
+            description: "mes"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "momento en que fivetran lo ingesto"
