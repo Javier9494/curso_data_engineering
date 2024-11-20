@@ -21,24 +21,31 @@ sources:
             tests:
               - not_null
               - unique
+            description: "id de la direccion"
           - name: zipcode
             tests:
               - not_null
+            description: "codigo postal"
           - name: country
             tests:
               - not_null
+            description: "pais"
           - name: address
             tests:
               - not_null
+            description: "direccion"
           - name: state
             tests:
               - not_null
+            description: "estado eeuu al que pertenece"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando se borro el dato"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto"
       - name: events
         loaded_at_field: _fivetran_synced
         columns:
@@ -46,33 +53,43 @@ sources:
             tests:
               - not_null
               - unique
+            description: "identificador del evento"
           - name: page_url
             tests:
               - not_null
+            description: "url de la pagina"
           - name: event_type
             tests:
               - not_null
+            description: "tipo de envento"
           - name: user_id
             tests:
               - not_null
+            description: "identificador de usuario"
           - name: product_id
             tests:
               - not_null
+            description: "identificador producto"
           - name: session_id
             tests:
               - not_null
+            description: "identificador de sesion"
           - name: created_at
             tests:
               - not_null
+            description: "cuando fue creado"
           - name: order_id
             tests:
               - not_null
+            description: "identificador de pedido"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando se borro el registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto"
       - name: orders
         loaded_at_field: _fivetran_synced
         columns:
@@ -80,66 +97,86 @@ sources:
             tests:
               - not_null
               - unique
+            description: "identificador de pedido"
           - name: shipping_service
             tests:
               - not_null
+            description: "servicio postal que reparte el pedido"
           - name: shipping_cost
             tests:
               - not_null
+            description: "coste del envio"
           - name: address_id
             tests:
               - not_null
+            description: "idenficador de direccion"
           - name: created_at
             tests:
               - not_null
+            description: "creado en"
           - name: promo_id
             tests:
               - not_null
+            description: "identificador de promo"
           - name: estimated_delivery_at
             tests:
               - not_null
+            description: "estimado de envio"
           - name: order_cost
             tests:
               - not_null
+            description: "coste del pedido"
           - name: user_id
             tests:
               - not_null
+            description: "identificador de usuario"
           - name: order_total
             tests:
               - not_null
+            description: "total del pedido"
           - name: delivered_at
             tests:
               - not_null
+            description: "enviado a"
           - name: tracking_id
             tests:
               - not_null
+            description: "identificador de tracking del envio"
           - name: status
             tests:
               - not_null
+            description: "estatus del pedido"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "borrado del registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto el registro"
       - name: order_items
         loaded_at_field: _fivetran_synced
         columns:
           - name: order_id
             tests:
               - not_null
+            description: "identificador de pedido"
           - name: product_id
             tests:
               - not_null
+            description: "identificador de producto"
           - name: quantity
             tests:
               - not_null
+            description: "cantidad"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando fue borrado el registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando fue ingestado el dato"
       - name: products
         loaded_at_field: _fivetran_synced
         columns:
@@ -147,21 +184,27 @@ sources:
             tests:
               - not_null
               - unique
+            description: "identificador de producto"
           - name: price
             tests:
               - not_null
+            description: "precio"
           - name: name
             tests:
               - not_null
+            description: "nombre del producto"
           - name: inventory
             tests:
               - not_null
+            description: "inventario"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando se borro el registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto el registro"
       - name: promos
         loaded_at_field: _fivetran_synced
         columns:
@@ -169,18 +212,23 @@ sources:
             tests:
               - not_null
               - unique
+            description: "identificador de promo"
           - name: discount
             tests:
               - not_null
+            description: "descuento"
           - name: status
             tests:
               - not_null
+            description: "estatus de la promocion"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando se borro el registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto el registro"
       - name: users
         loaded_at_field: _fivetran_synced
         columns:
@@ -188,33 +236,44 @@ sources:
             tests:
               - not_null
               - unique
+            description: "identificador de usuario"
           - name: updated_at
             tests:
               - not_null
+            description: "actualizado en"
           - name: address_id
             tests:
               - not_null
+            description: "identificador de direccion"
           - name: last_name
             tests:
               - not_null
+            description: "apellido"
           - name: created_at
             tests:
               - not_null
+            description: "creado en"
           - name: phone_number
             tests:
               - not_null
+            description: "numero de telefono"
           - name: total_orders
             tests:
               - not_null
+            description: "total del pedido"
           - name: first_name
             tests:
               - not_null
+            description: "nombre"
           - name: email
             tests:
               - not_null
+            description: "email"
           - name: _fivetran_deleted
             tests:
               - not_null
+            description: "cuando se borro el registro"
           - name: _fivetran_synced
             tests:
               - not_null
+            description: "cuando se ingesto el dato"
