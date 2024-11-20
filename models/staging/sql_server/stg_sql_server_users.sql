@@ -9,7 +9,7 @@
         PHONE_NUMBER,
         FIRST_NAME,
         EMAIL,
-        _FIVETRAN_DELETED,
+       -- _FIVETRAN_DELETED,
         _FIVETRAN_SYNCED
     FROM {{ source('sql_server_dbo', 'users') }} 
 
