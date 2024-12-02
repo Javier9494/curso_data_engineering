@@ -14,7 +14,7 @@
         else true
         END as _FIVETRAN_DELETED,
         CONVERT_TIMEZONE('UTC', _FIVETRAN_SYNCED) AS _FIVETRAN_SYNCED_UTC
-    FROM {{ ref('sql_server_products_snp') }} 
+    FROM {{ ref('sql_server_users_snp') }} 
 
     -- borramos campo total_orders, ya que todo nulo y ver que hacer con fivetran_deleted ya que también todo nulo
     -- tiene sentido?

@@ -10,6 +10,6 @@
         else true
         END as _FIVETRAN_DELETED,
         CONVERT_TIMEZONE('UTC', _FIVETRAN_SYNCED) AS _FIVETRAN_SYNCED_UTC
-    FROM {{ ref('sql_server_users_snp') }} 
+    FROM {{ ref('sql_server_products_snp') }} 
 
     -- quitar total_orders ya que todo null, lo mismo con _FIVETRAN_DELETED
