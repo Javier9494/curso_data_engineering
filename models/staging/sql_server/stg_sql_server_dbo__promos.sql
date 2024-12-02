@@ -18,17 +18,20 @@ UNION ALL
     SELECT 
         *,
         {{ dbt_utils.generate_surrogate_key(['promo_id']) }} AS promo_surr_key, 
-        promo_id AS promo_desc 
+        promo_id AS promo_name
     FROM t1
 )
 
 SELECT 
-    promo_surr_key, 
-    promo_desc,     
-    discount,       
-    status,
-    _fivetran_deleted,
-    _fivetran_synced
+    cast(promo_surr_key as varchar(36)) as promo_id, 
+    cast(promo_desc as varchar(100)) as promo_name,     
+    cast(discount as number(10,2)) as discount,       
+    status as status_promo,
+    CASE
+    WHEN _FIVETRAN_DELETED is null then false
+    else true
+    END as _FIVETRAN_DELETED,
+    CONVERT_TIMEZONE('UTC', _FIVETRAN_SYNCED) AS _FIVETRAN_SYNCED_UTC
 FROM base
 
 
