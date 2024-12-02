@@ -3,7 +3,7 @@ version: 2
 models:
 
   # ADDRESSES #
-  - name: addresses
+  - name: stg_sql_server_dbo__addresses
     description: "Modelo de direcciones con datos sincronizados desde Fivetran"
     columns:
       - name: ADDRESS_ID
@@ -40,7 +40,7 @@ models:
           - not_null
 
   # EVENTS #
-  - name: events
+  - name: stg_sql_server_dbo__events
     description: "Modelo de eventos de usuarios con datos sincronizados desde Fivetran"
     columns:
       - name: EVENT_ID
