@@ -61,14 +61,14 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('users')
+          - to: ref('stg_sql_server_dbo__users')
             field: USER_ID
       - name: PRODUCT_ID
         description: "ID único del producto relacionado con el evento, en formato UUID."
         tests:
           - not_null
         relationships:
-          - to: ref('products')
+          - to: ref('stg_sql_server_dbo__products')
             field: PRODUCT_ID
       - name: SESSION_ID
         description: "ID de la sesión en la que ocurrió el evento, en formato UUID."
@@ -83,7 +83,7 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('orders')
+          - to: ref('stg_sql_server_dbo__orders')
             field: ORDER_ID
       - name: _FIVETRAN_DELETED
         description: "Indicador de eliminación desde Fivetran. Es 'true' si se marcó como eliminado, 'false' en caso contrario."
@@ -97,7 +97,7 @@ models:
           - not_null
 
   # ORDER ITEMS #
-  - name: order_items
+  - name: stg_sql_server_dbo__order_items
     description: "Modelo de artículos de pedido con datos sincronizados desde Fivetran"
     config:
       materialized: incremental
@@ -107,14 +107,14 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('orders')
+          - to: ref('stg_sql_server_dbo__orders')
             field: ORDER_ID
       - name: PRODUCT_ID
         description: "ID único del producto dentro del pedido, en formato UUID."
         tests:
           - not_null
         relationships:
-          - to: ref('products')
+          - to: ref('stg_sql_server_dbo__products')
             field: PRODUCT_ID
       - name: QUANTITY
         description: "Cantidad del producto en el pedido."
@@ -133,7 +133,7 @@ models:
           - not_null
 
   # ORDERS #
-  - name: orders
+  - name: stg_sql_server_dbo__orders
     description: "Modelo de órdenes con datos sincronizados desde Fivetran"
     columns:
       - name: order_id
@@ -154,7 +154,7 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('addresses')
+          - to: ref('stg_sql_server_dbo__addresses')
             field: address_id
       - name: created_at
         description: "Fecha y hora de la creación de la orden en formato UTC."
@@ -165,7 +165,7 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('promos')
+          - to: ref('stg_sql_server_dbo__promos')
             field: promo_name
       - name: estimated_delivery_at
         description: "Fecha estimada de entrega de la orden en formato UTC."
@@ -181,7 +181,7 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('users')
+          - to: ref('stg_sql_server_dbo__users')
             field: user_id
       - name: order_total
         description: "Total de la orden, incluyendo impuestos y costos."
@@ -210,7 +210,7 @@ models:
           - not_null
 
   # PRODUCTS #
-  - name: products
+  - name: stg_sql_server_dbo__products
     description: "Modelo de productos con datos sincronizados desde Fivetran"
     config:
       materialized: table
@@ -246,7 +246,7 @@ models:
           - not_null
 
   # USERS #
-  - name: users
+  - name: stg_sql_server_dbo__users
     description: "Modelo de usuarios con datos sincronizados desde Fivetran"
     config:
       materialized: table
@@ -265,7 +265,7 @@ models:
         tests:
           - not_null
         relationships:
-          - to: ref('addresses')
+          - to: ref('stg_sql_server_dbo__addresses')
             field: ADDRESS_ID
       - name: LAST_NAME
         description: "Apellido del usuario."
@@ -300,7 +300,7 @@ models:
           - not_null
 
   # PROMOS #
-  - name: promos
+  - name: stg_sql_server_dbo__promos
     description: "Modelo de promociones, unificando las promociones existentes con la 'no promo'."
     config:
       materialized: table
