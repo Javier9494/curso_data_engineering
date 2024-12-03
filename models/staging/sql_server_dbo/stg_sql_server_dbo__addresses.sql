@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
  SELECT 
         cast(ADDRESS_ID as varchar(36)) as ADDRESS_ID, -- todos los uuiid son de 36 caracteres.
