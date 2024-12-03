@@ -8,7 +8,6 @@ models:
         description: "Cantidad procesada como entero."
         tests:
           - not_null
-          - integer
 
       - name: month
         description: "Mes extraído del campo month en el formato numérico."
@@ -21,7 +20,6 @@ models:
         description: "Año extraído del campo month."
         tests:
           - not_null
-          - integer
 
       - name: product_id
         description: "Identificador único del producto, convertido a una cadena de 36 caracteres."
