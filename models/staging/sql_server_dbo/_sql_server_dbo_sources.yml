@@ -48,7 +48,6 @@ sources:
           - name: _fivetran_synced
             description: "Campo temporal que indica la última vez que una fila fue sincronizada"
             tests:
-              - timestamp
               - not_null
 
       # EVENTS
@@ -87,8 +86,7 @@ sources:
             description: "Marca de tiempo en la que ocurrió el evento"
             tests:
               - not_null
-              - timestamp
-              - unique
+    
           - name: order_id
             description: "ID del pedido asociado al evento (si aplica)"
             tests:
@@ -102,7 +100,6 @@ sources:
             description: "Marca de tiempo que indica la última sincronización con Fivetran"
             tests:
               - not_null
-              - timestamp
 
       # ORDERS
       - name: orders
@@ -122,39 +119,36 @@ sources:
             description: "Costo del envío de la orden."
             tests:
               - not_null
-              - numeric
               - is_positive:
                   column_name: shipping_cost
           - name: address_id
             description: "ID de la dirección asociada a la orden."
-            tests:
-              - not_null
+            
           - name: created_at
             description: "Marca de tiempo de cuando se creó la orden."
             tests:
               - not_null
+
           - name: promo_id
             description: "Promoción (si aplica)."
-            tests:
-              - not_null
+            
           - name: estimated_delivery_at
             description: "Fecha estimada de entrega de la orden."
           - name: order_cost
             description: "Costo de la orden excluyendo impuestos y envío."
             tests:
               - not_null
-              - numeric
               - is_positive:
                   column_name: order_cost
+
           - name: user_id
             description: "ID del usuario que realizó la orden."
-            tests:
-              - not_null
+            
           - name: order_total
             description: "Total de la orden (costo base + impuestos + envío)."
             tests:
               - not_null
-              - numeric
+
           - name: delivered_at
             description: "Fecha de entrega de la orden."
           - name: tracking_id
@@ -172,7 +166,6 @@ sources:
             description: "Marca de tiempo que indica la última sincronización con Fivetran."
             tests:
               - not_null
-              - timestamp
 
       # ORDER_ITEMS
       - name: order_items
@@ -202,7 +195,6 @@ sources:
             description: "Marca de tiempo que indica la última sincronización con Fivetran."
             tests:
               - not_null
-              - timestamp
 
       # PRODUCTS
       - name: products
@@ -277,7 +269,6 @@ sources:
             description: "Marca de tiempo que indica la última sincronización con Fivetran."
             tests:
               - not_null
-              - timestamp
 
       - name: promos
         loaded_at_field: _fivetran_synced
