@@ -1,7 +1,6 @@
 version: 2
 
 models:
-
   # ADDRESSES #
   - name: stg_sql_server_dbo__addresses
     description: "Modelo de direcciones con datos sincronizados desde Fivetran"
@@ -169,7 +168,7 @@ models:
         description: "Estado actual de la orden."
         tests:
           - accepted_values:
-              values: ['delivered', 'shipped', 'preparing']
+              values: ["delivered", "shipped", "preparing"]
       - name: _FIVETRAN_DELETED
         description: "Indicador de eliminación desde Fivetran. Es 'true' si se marcó como eliminado, 'false' en caso contrario."
         tests:
