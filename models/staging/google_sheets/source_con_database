@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: google_sheets  # Name of the source
+    schema: google_sheets  # Schema where the raw data resides
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"  # Dynamic database name based on environment
+    quoting:  # Avoid quoting database, schema, and identifiers unless necessary
+      database: false
+      schema: false
+      identifier: false
+    freshness:
+      warn_after:
+        count: 24
+        period: hour
+      error_after:
+        count: 48
+        period: hour
+    tables:
+      - name: budget
+        loaded_at_field: _fivetran_synced
+        description: "Data about budget in the demo environment."
+        columns:
+          - name: _row
+            description: "Row number in the Google Sheet."
+          - name: product_id
+            description: "Identificador único del producto, convertido a una cadena de 36 caracteres."
+          - name: quantity
+            description: "Cantidad procesada como entero."
+          - name: month
+            description: "Fecha mensual en la que se hace el budget."
+          - name: _fivetran_synced
+            description: "Marca de tiempo sincronizada en UTC desde el proceso de Fivetran."
