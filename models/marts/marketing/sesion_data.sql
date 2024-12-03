@@ -30,6 +30,7 @@ session_info AS (
         SUM(CASE WHEN EVENT_TYPE = 'package_shipped' THEN 1 ELSE 0 END) AS package_shipped_events
 
     FROM event_data
+    where event_type != 'package_shipped'
     GROUP BY SESSION_ID, USER_ID
 )
 
