@@ -55,6 +55,8 @@ models:
         +schema: core
       marketing:
         +schema: marketing
+      Att_cliente:
+        +schema: Att_cliente
 seeds:
   +schema: seed_data
   +database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"        
